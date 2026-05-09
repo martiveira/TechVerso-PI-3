@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Criar Vaga — TechVerso{% endblock %}
+
+{% block content %}
+{% include 'messages.html' %}
+
+<div class="section-page" style="max-width:720px;">
+  <div class="section-header">
+    <h1 class="glitch-text" data-text="CRIAR VAGA">CRIAR VAGA</h1>
+    <p>Preencha os campos abaixo para publicar uma nova vaga</p>
+  </div>
+
+  <div class="dark-card">
+    <form action="." method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="d-flex gap-2 flex-wrap mt-3">
+        <button class="btn-teal" type="submit">
+          <i class="fas fa-save"></i> Salvar Vaga
+        </button>
+        <button class="btn-dark-outline" type="reset">
+          <i class="fas fa-undo"></i> Limpar
+        </button>
+        <button class="btn-dark-outline" type="button" onclick="history.back()">
+          <i class="fas fa-arrow-left"></i> Voltar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Calculadora — TechVerso{% endblock %}
+
+{% block content %}
+{% include 'messages.html' %}
+
+<div class="section-page" style="max-width:680px;">
+  <div class="section-header">
+    <h1 class="glitch-text" data-text="CALCULADORA">CALCULADORA</h1>
+    <p>Calculadora de Médias UNIVESP</p>
+  </div>
+
+  <div class="dark-card">
+    <h2 style="font-family:'ArcadeGamer',sans-serif;font-size:1.05rem;color:#fff;margin-bottom:1.5rem;">
+      <i class="fas fa-calculator me-2" style="color:#00e5ff;"></i>Calculadora de Médias
+    </h2>
+
+    <div class="mb-4">
+      <label for="tipoMedia">Tipo de Média</label>
+      <select id="tipoMedia" onchange="atualizarCampos()">
+        <option value="bimestral">Média Bimestral</option>
+        <option value="exame">Média com Exame</option>
+      </select>
+    </div>
+
+    <form id="formMedia" onsubmit="calcularMedia(event)">
+
+      <div id="camposBimestral">
+        <div class="mb-3">
+          <label for="notaAtividades">Nota de Atividades</label>
+          <input type="number" id="notaAtividades" name="notaAtividades"
+                 step="0.01" min="0" max="10" placeholder="0.00">
+        </div>
+        <div class="mb-3">
+          <label for="notaProvaBimestral">Nota da Prova</label>
+          <input type="number" id="notaProvaBimestral" name="notaProvaBimestral"
+                 step="0.01" min="0" max="10" placeholder="0.00">
+        </div>
+      </div>
+
+      <div id="camposExame" style="display:none;">
+        <div class="mb-3">
+          <label for="mediaBimestral">Média Bimestral obtida</label>
+          <input type="number" id="mediaBimestral" name="mediaBimestral"
+                 step="0.01" min="0" max="10" placeholder="0.00">
+        </div>
+        <div class="mb-3">
+          <label for="notaExame">Nota da Prova de Exame</label>
+          <input type="number" id="notaExame" name="notaExame"
+                 step="0.01" min="0" max="10" placeholder="0.00">
+        </div>
+      </div>
+
+      <div id="resultado" class="mb-4" style="display:none;"></div>
+
+      <div class="d-flex gap-2">
+        <button class="btn-teal" type="submit" style="flex:1;">Calcular</button>
+        <button class="btn-dark-outline" type="reset" style="flex:1;"
+                onclick="document.getElementById('resultado').style.display='none'">Limpar</button>
+      </div>
+    </form>
+  </div>
+
+  <div style="margin-top:1rem;padding:1rem 1.25rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;font-size:0.8rem;color:#555;line-height:1.7;">
+    <strong style="color:#888;">Fórmula bimestral:</strong> (Atividades × 0,4) + (Prova × 0,6)<br>
+    <strong style="color:#888;">Fórmula exame:</strong> (Média × 0,5) + (Exame × 0,5) &mdash; se média &lt; 5,0
+  </div>
+</div>
+
+<script src="{% static 'js/calculadora.js' %}"></script>
+<script>
+  const origCalc = window.calcularMedia;
+  window.calcularMedia = function(e) {
+    origCalc(e);
+    const res = document.getElementById('resultado');
+    if (res && res.innerHTML.trim()) res.style.display = 'block';
+  };
+</script>
+{% endblock %}

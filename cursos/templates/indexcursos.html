@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cursos — TechVerso{% endblock %}
+
+{% block content %}
+{% include 'messages.html' %}
+
+<div class="section-page">
+  <div class="section-header">
+    <h1 class="glitch-text" data-text="CURSOS">CURSOS</h1>
+    <p>Cursos divulgados pela comunidade TechVerso</p>
+  </div>
+
+  <div style="text-align:center;margin-bottom:2rem;">
+    <a href="{% url 'form_cursos' %}" class="btn-teal">
+      <i class="fas fa-plus"></i> Cadastrar Curso
+    </a>
+  </div>
+
+  <div class="dark-card">
+    <h2 style="font-family:'ArcadeGamer',sans-serif;font-size:1.05rem;color:#fff;margin-bottom:1.2rem;">
+      Cursos Divulgados
+    </h2>
+    <div class="tabela-wrapper">
+      <table class="tabela-cursos">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Disponibilizador</th>
+            <th>Área</th>
+            <th>Certificado</th>
+            <th>Tipo</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>09/05/2026</td>
+            <td>Digital Innovation One</td>
+            <td>Vários</td>
+            <td>Sim</td>
+            <td>Gratuitos e Pagos</td>
+            <td><a href="https://www.dio.me/" target="_blank"><i class="fas fa-external-link-alt me-1"></i>Acessar</a></td>
+          </tr>
+          <tr>
+            <td>09/05/2026</td>
+            <td>RECODE</td>
+            <td>Vários</td>
+            <td>Não sei</td>
+            <td>Não sei</td>
+            <td><a href="https://recode.org.br/" target="_blank"><i class="fas fa-external-link-alt me-1"></i>Acessar</a></td>
+          </tr>
+          <tr>
+            <td>09/05/2026</td>
+            <td>Fundação Bradesco</td>
+            <td>Vários</td>
+            <td>Não sei</td>
+            <td>Gratuito</td>
+            <td><a href="https://www.ev.org.br/" target="_blank"><i class="fas fa-external-link-alt me-1"></i>Acessar</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

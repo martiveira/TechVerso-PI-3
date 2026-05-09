@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}TechVerso{% endblock %}
+
+{% block content %}
+{% include 'messages.html' %}
+
+<!-- CAROUSEL -->
+<div id="carouselExampleCaptions"
+     class="carousel slide"
+     data-bs-ride="carousel"
+     data-bs-interval="3500">
+
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+  </div>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <a href="{% url 'index' %}">
+        <picture>
+          <source media="(max-width: 768px)" srcset="{% static 'images/astro_officesiren_mob.png' %}">
+          <img src="{% static 'images/astro_officesiren.png' %}" class="d-block w-100" alt="Bem-vindo ao Techverso">
+        </picture>
+      </a>
+      <div class="carousel-caption-below">
+        <h5 class="glitch-text" data-text="BEM-VINDO AO TECHVERSO">BEM-VINDO AO TECHVERSO</h5>
+        <p>Exploração sem limites começa aqui!</p>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <a href="{% url 'vagas' %}">
+        <picture>
+          <source media="(max-width: 768px)" srcset="{% static 'images/astro_chamingven_mob.png' %}">
+          <img src="{% static 'images/astro_chamingven.png' %}" class="d-block w-100" alt="Vagas e Network">
+        </picture>
+      </a>
+      <div class="carousel-caption-below">
+        <h5 class="glitch-text" data-text="V.E.N. - Vagas, Estágio e Network">V.E.N. - Vagas, Estágio e Network</h5>
+        <p>Conecte-se ao seu universo de oportunidades!</p>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <a href="{% url 'faq' %}">
+        <picture>
+          <source media="(max-width: 768px)" srcset="{% static 'images/astroquestion_mob.png' %}">
+          <img src="{% static 'images/astroquestion.png' %}" class="d-block w-100" alt="FAQ">
+        </picture>
+      </a>
+      <div class="carousel-caption-below">
+        <h5 class="glitch-text" data-text="FAQ">FAQ</h5>
+        <p>Perdido em órbita? Navegue pelas respostas!</p>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <a href="https://linktr.ee/TechVersoBR" target="_blank" rel="noopener noreferrer">
+        <picture>
+          <source media="(max-width: 768px)" srcset="{% static 'images/astroinfluencer_mob.png' %}">
+          <img src="{% static 'images/astroinfluencer.png' %}" class="d-block w-100" alt="Redes do Techverso">
+        </picture>
+      </a>
+      <div class="carousel-caption-below">
+        <h5 class="glitch-text" data-text="SIGA NOSSAS REDES">SIGA NOSSAS REDES</h5>
+        <p>O Techverso está em todas as frequências!</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Próximo</span>
+  </button>
+</div>
+
+<!-- SECTION INTRO -->
+<div class="home-section-intro">
+  <h2 class="glitch-text" data-text="EXPLORE O UNIVERSO">
+    <span class="highlight-cyan">EXPLORE</span> O <span class="highlight-magenta">UNIVERSO</span>
+  </h2>
+  <p>Tudo que a comunidade TechVerso oferece para impulsionar sua carreira em tecnologia.</p>
+</div>
+
+<!-- FEATURE CARDS GRID -->
+<div class="glitch-container">
+
+  <div class="feature-card border-cyan fade-in-up">
+    <h2>Calculadora UNIVESP</h2>
+    <p>Quer saber a sua nota bimestral? Confira a calculadora da UNIVESP.</p>
+    <a href="{% url 'calculadora' %}" class="btn-teal" style="align-self:flex-start;">Clique aqui!</a>
+  </div>
+
+  <div class="feature-card border-magenta fade-in-up">
+    <h2>Cursos, Projetos e etc.</h2>
+    <p>Espaço dedicado à divulgação de cursos pagos ou gratuitos, projetos pessoais ou profissionais, e indicação de produtores de conteúdo.</p>
+    <a href="{% url 'cursos' %}" class="btn-teal" style="align-self:flex-start;">Ver Cursos</a>
+  </div>
+
+  <div class="feature-card border-green fade-in-up">
+    <h2>V.E.N – Vagas, Estágios e Networking</h2>
+    <p>Vagas de trabalho, estágios e networking. Nunca divulgue dados pessoais sensíveis.</p>
+    <a href="{% url 'vagas' %}" class="btn-teal" style="align-self:flex-start;">Ver Vagas</a>
+  </div>
+
+  <div class="feature-card border-orange fade-in-up">
+    <h2>FAQs – Perguntas Frequentes</h2>
+    <p>Respostas para as dúvidas mais comuns da UNIVESP, organizadas pela comunidade TechVerso.</p>
+    <a href="{% url 'faq' %}" class="btn-teal" style="align-self:flex-start;">Ver FAQs</a>
+  </div>
+
+</div>
+
+<script src="{% static 'js/glitch.js' %}"></script>
+{% endblock %}

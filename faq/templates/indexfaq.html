@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}FAQ — TechVerso{% endblock %}
+
+{% block content %}
+{% include 'messages.html' %}
+
+<div class="section-page">
+  <div class="section-header">
+    <h1 class="glitch-text" data-text="FAQ">FAQ</h1>
+    <p>Respostas para as dúvidas mais comuns sobre a UNIVESP &mdash; SEI e AVA.</p>
+  </div>
+
+  <div class="dark-card">
+    <h2 style="font-family:'ArcadeGamer',sans-serif;font-size:1.05rem;color:#fff;margin-bottom:1.5rem;">
+      <i class="fas fa-question-circle me-2" style="color:#00e5ff;"></i>Perguntas Frequentes
+    </h2>
+
+    <div class="accordion" id="faqAccordion">
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#faq1">
+            Como acesso o AVA (Ambiente Virtual de Aprendizagem)?
+          </button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            O AVA é acessado pelo portal da UNIVESP com seu login institucional.
+            Lá você encontra materiais de aula, atividades, fóruns e videoaulas das disciplinas matriculadas.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#faq2">
+            Como funciona o sistema SEI?
+          </button>
+        </h2>
+        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            O SEI (Sistema Eletrônico de Informações) é a plataforma administrativa da UNIVESP para
+            protocolos, requerimentos e documentos institucionais.
+            Acesse em: <a href="https://sei.sp.gov.br" target="_blank" style="color:#00e5ff;">sei.sp.gov.br</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#faq3">
+            Qual o prazo para entrega de atividades?
+          </button>
+        </h2>
+        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Os prazos variam por disciplina e são informados no próprio AVA.
+            Fique atento às datas no calendário da sua turma para não perder entregas.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#faq4">
+            Como é calculada a média bimestral?
+          </button>
+        </h2>
+        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            A média bimestral é: <strong style="color:#00e5ff;">(Atividades × 0,4) + (Prova × 0,6)</strong>.
+            Use nossa <a href="{% url 'calculadora' %}" style="color:#00e5ff;">calculadora</a> para facilitar!
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#faq5">
+            Como faço para trancar matrícula?
+          </button>
+        </h2>
+        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            O trancamento de matrícula é solicitado via SEI dentro do prazo estabelecido no calendário acadêmico.
+            Consulte o portal da UNIVESP ou entre em contato com sua coordenação regional para mais detalhes.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

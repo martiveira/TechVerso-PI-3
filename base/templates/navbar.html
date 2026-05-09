@@ -1,0 +1,132 @@
+{% load static %}
+
+<nav class="navbar">
+  <div class="container-fluid d-flex align-items-center w-100 gap-3">
+
+    <!-- TEXT LOGO: TECH (cyan) + VERSO (magenta) -->
+    <a class="navbar-brand" href="{% url 'index' %}">
+      <span class="logo-tech">TECH</span><span class="logo-verso">VERSO</span>
+    </a>
+
+    <!-- DESKTOP NAV LINKS -->
+    <ul class="navbar-nav flex-row gap-1 me-auto d-none d-lg-flex">
+      <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active-nav{% endif %}"
+           href="{% url 'index' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.url_name == 'cursos' %}active-nav{% endif %}"
+           href="{% url 'cursos' %}">Cursos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.url_name == 'vagas' %}active-nav{% endif %}"
+           href="{% url 'vagas' %}">Vagas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.url_name == 'calculadora' %}active-nav{% endif %}"
+           href="{% url 'calculadora' %}">Calculadora</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.url_name == 'faq' %}active-nav{% endif %}"
+           href="{% url 'faq' %}">FAQ</a>
+      </li>
+    </ul>
+
+    <!-- DESKTOP RIGHT: user info / login buttons -->
+    <div class="d-none d-lg-flex align-items-center gap-2 ms-auto">
+      {% if user.is_authenticated %}
+      <div class="navbar-user-info">
+        <span>Olá,&nbsp;</span>
+        <span class="user-name">{{ user.get_full_name|default:user.username }}</span>
+      </div>
+      <form method="POST" action="{% url 'logout' %}" style="margin:0;">
+        {% csrf_token %}
+        <button class="navbar-logout-btn" type="submit" title="Sair">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </form>
+      {% else %}
+      <a class="btn-dark-outline" href="{% url 'login' %}">Entrar</a>
+      <a class="btn-teal" href="{% url 'register' %}">Registrar</a>
+      {% endif %}
+    </div>
+
+    <!-- MOBILE HAMBURGER -->
+    <button class="navbar-toggler d-lg-none ms-auto" id="openMenu" type="button" aria-label="Menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  </div>
+</nav>
+
+<!-- FULL-SCREEN MOBILE MENU OVERLAY -->
+<div id="mobileMenu" class="mobile-menu">
+
+  <!-- Header -->
+  <div class="mobile-menu-header">
+    <a class="mobile-menu-logo" href="{% url 'index' %}">
+      <span class="logo-tech">TECH</span><span class="logo-verso">VERSO</span>
+    </a>
+    <button id="closeMenu" aria-label="Fechar menu">&times;</button>
+  </div>
+  <div class="mobile-menu-rainbow"></div>
+
+  <!-- Nav links -->
+  <ul class="mobile-links">
+    <li>
+      <a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}active-nav{% endif %}">
+        Home
+      </a>
+    </li>
+    <li>
+      <a href="{% url 'cursos' %}" class="{% if request.resolver_match.url_name == 'cursos' %}active-nav{% endif %}">
+        Cursos
+      </a>
+    </li>
+    <li>
+      <a href="{% url 'vagas' %}" class="{% if request.resolver_match.url_name == 'vagas' %}active-nav{% endif %}">
+        Vagas
+      </a>
+    </li>
+    <li>
+      <a href="{% url 'calculadora' %}" class="{% if request.resolver_match.url_name == 'calculadora' %}active-nav{% endif %}">
+        Calculadora
+      </a>
+    </li>
+    <li>
+      <a href="{% url 'faq' %}" class="{% if request.resolver_match.url_name == 'faq' %}active-nav{% endif %}">
+        FAQ
+      </a>
+    </li>
+  </ul>
+
+  <!-- User / login -->
+  <div class="mobile-menu-user">
+    {% if user.is_authenticated %}
+    <div>
+      <span>{{ user.get_full_name|default:user.username }}</span>
+    </div>
+    <form method="POST" action="{% url 'logout' %}" style="margin:0;">
+      {% csrf_token %}
+      <button type="submit" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:0.85rem;cursor:pointer;display:flex;align-items:center;gap:0.4rem;">
+        <i class="fas fa-sign-out-alt"></i> Sair
+      </button>
+    </form>
+    {% else %}
+    <a href="{% url 'login' %}" class="btn-dark-outline" style="font-size:0.85rem;padding:0.4rem 1.1rem;">Entrar</a>
+    <a href="{% url 'register' %}" class="btn-teal" style="font-size:0.85rem;padding:0.4rem 1.1rem;">Registrar</a>
+    {% endif %}
+  </div>
+
+  <!-- Social icons -->
+  <div class="mobile-social-icons">
+    <a href="https://chat.whatsapp.com/JONCTfNFkn50vZR04NNw2Y" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.youtube.com/@TechVersoTV" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://github.com/UNIVESP23" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://t.me/techversobr" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+    <a href="https://www.linkedin.com/in/techverso/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  </div>
+
+</div>
+
+<script src="{% static 'js/navbar.js' %}"></script>

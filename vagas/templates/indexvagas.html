@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Vagas — TechVerso{% endblock %}
+
+{% block content %}
+{% include 'messages.html' %}
+
+<div class="section-page" style="max-width:680px;">
+  <div class="section-header">
+    <h1 class="glitch-text" data-text="V.E.N.">V.E.N.</h1>
+    <p>Vagas, Estágios e Networking</p>
+  </div>
+
+  <div class="dark-card" style="text-align:center;">
+    <p style="color:#aaa;font-size:0.9rem;margin-bottom:1.75rem;text-align:center;">
+      Aqui você pode gerenciar as vagas disponíveis. Publique novas vagas ou confira as
+      oportunidades listadas pela comunidade.
+    </p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+      <a class="btn-teal" href="{% url 'create' %}">
+        <i class="fas fa-plus"></i> Postar Vaga
+      </a>
+      <a class="btn-dark-outline" href="{% url 'list' %}">
+        <i class="fas fa-list"></i> Listar Vagas
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

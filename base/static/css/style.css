@@ -1,0 +1,1032 @@
+/* =======================================
+   RESET & BASE
+======================================= */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* =======================================
+   FONTES
+======================================= */
+@font-face {
+  font-family: 'ArcadeGamer';
+  src: url('fonts/ARCADECLASSIC.ttf') format('truetype');
+}
+
+/* =======================================
+   RAINBOW STRIP (topo da página)
+======================================= */
+body::before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #00ffcc, #00aaff, #aa00ff, #ff00aa, #ff6600, #aaff00, #00ffcc);
+  background-size: 200% 100%;
+  animation: rainbowShift 4s linear infinite;
+  z-index: 9999;
+}
+
+@keyframes rainbowShift {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* =======================================
+   CORPO GLOBAL
+======================================= */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: url('../images/background-site.png') no-repeat center center / cover fixed;
+  background-color: #0a0a0f;
+  background-blend-mode: luminosity;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
+  flex: 1;
+}
+
+/* =======================================
+   TIPOGRAFIA
+======================================= */
+h1, h2, h3, h5, .fonte-arcade {
+  font-family: 'ArcadeGamer', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+h1 {
+  color: #fff;
+  font-size: 2.6rem;
+  text-align: center;
+}
+
+h5 {
+  color: #fff;
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.65;
+  text-align: center;
+  color: #aaa;
+}
+
+/* =======================================
+   NAVBAR
+======================================= */
+.navbar {
+  position: fixed;
+  top: 3px; /* below rainbow strip */
+  left: 0;
+  width: 100%;
+  height: 54px;
+  z-index: 2000;
+  background: rgba(8, 8, 16, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Text-based logo: TECH (cyan) + VERSO (magenta) */
+.navbar-brand {
+  font-family: 'ArcadeGamer', sans-serif;
+  font-size: 1.35rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  padding: 0;
+  margin-right: 1.5rem;
+}
+
+.navbar-brand .logo-tech {
+  color: #00e5ff;
+}
+
+.navbar-brand .logo-verso {
+  color: #e040fb;
+}
+
+/* In case the image logo is still loaded */
+.navbar-brand img {
+  height: 34px;
+  display: none; /* hidden — use text logo */
+}
+
+.navbar-nav .nav-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65) !important;
+  padding: 0.3rem 0.85rem !important;
+  border-radius: 20px;
+  transition: color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #fff !important;
+  background: rgba(255,255,255,0.06);
+}
+
+.navbar-nav .nav-link.active-nav {
+  background: rgba(0, 229, 255, 0.15);
+  color: #00e5ff !important;
+}
+
+/* User info on the right */
+.navbar-user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+}
+
+.navbar-user-info .user-name {
+  color: #fff;
+  font-weight: 600;
+}
+
+.navbar-logout-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.navbar-logout-btn:hover {
+  color: #fff;
+}
+
+/* =======================================
+   HAMBURGER (mobile)
+======================================= */
+.navbar-toggler {
+  border: none !important;
+  background: none !important;
+  padding: 0.3rem;
+  z-index: 2100;
+  cursor: pointer;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+  width: 24px;
+  height: 24px;
+}
+
+/* =======================================
+   MAIN CONTENT PADDING (fixed navbar + strip)
+======================================= */
+main {
+  padding-top: 57px;
+}
+
+/* =======================================
+   BUTTONS
+======================================= */
+/* Primary teal pill button */
+.btn-teal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0a0a0f;
+  background: #00e5ff;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-teal:hover {
+  background: #33ecff;
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.4);
+  color: #0a0a0f;
+  text-decoration: none;
+}
+
+/* Secondary dark button */
+.btn-dark-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-dark-outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.25);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Legacy glass-btn — maps to btn-dark-outline style */
+.glass-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.glass-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  text-decoration: none;
+}
+
+.glass-btn-cyan, .glass-btn.glass-btn-cyan {
+  color: #0a0a0f !important;
+  background: #00e5ff !important;
+  border: none !important;
+}
+
+.glass-btn-cyan:hover, .glass-btn.glass-btn-cyan:hover {
+  background: #33ecff !important;
+  box-shadow: 0 0 14px rgba(0,229,255,0.4);
+}
+
+/* =======================================
+   FULL-SCREEN MOBILE MENU OVERLAY
+======================================= */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0a0f;
+  z-index: 3000;
+  transform: translateX(-100%);
+  transition: transform 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.mobile-menu-logo {
+  font-family: 'ArcadeGamer', sans-serif;
+  font-size: 1.35rem;
+  text-decoration: none;
+}
+
+.mobile-menu-logo .logo-tech  { color: #00e5ff; }
+.mobile-menu-logo .logo-verso { color: #e040fb; }
+
+.mobile-menu-rainbow {
+  height: 3px;
+  background: linear-gradient(90deg, #00ffcc, #00aaff, #aa00ff, #ff00aa, #aaff00, #00ffcc);
+}
+
+#closeMenu {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+#closeMenu:hover { color: #fff; }
+
+.mobile-links {
+  list-style: none;
+  padding: 0.75rem 1rem;
+  margin: 0;
+  flex: 1;
+}
+
+.mobile-links li a {
+  display: block;
+  color: rgba(255,255,255,0.75);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  transition: all 0.18s ease;
+}
+
+.mobile-links li a:hover,
+.mobile-links li a.active-nav {
+  background: rgba(0, 229, 255, 0.12);
+  color: #00e5ff;
+}
+
+.mobile-menu-user {
+  padding: 0.75rem 2rem 1rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+}
+
+.mobile-menu-user .user-name { color: #fff; font-weight: 600; }
+
+.mobile-social-icons {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem 1.5rem;
+  justify-content: flex-start;
+}
+
+.mobile-social-icons a {
+  color: rgba(255,255,255,0.45);
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.mobile-social-icons a:hover { color: #00e5ff; }
+
+/* =======================================
+   SECTION PAGE WRAPPER
+======================================= */
+.section-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.section-divider {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #00e5ff, #e040fb);
+  border: none;
+  margin: 0.8rem auto;
+  border-radius: 2px;
+}
+
+/* =======================================
+   GLITCH TEXT
+======================================= */
+.glitch-text {
+  font-family: 'ArcadeGamer', monospace;
+  position: relative;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  display: block;
+  user-select: none;
+}
+
+.glitch-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0; width: 100%;
+  color: #00e5ff;
+  z-index: -1;
+  transform: translate(-2px, 2px);
+}
+
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0; width: 100%;
+  color: #e040fb;
+  z-index: -1;
+  transform: translate(2px, -2px);
+}
+
+/* =======================================
+   DARK CARD (flat)
+======================================= */
+.dark-card {
+  background: #111118;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+/* glitch-frame kept for backward compat — same as dark-card */
+.glitch-frame {
+  background: #111118;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+}
+
+/* =======================================
+   CAROUSEL
+======================================= */
+#carouselExampleCaptions {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 68vh;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-inner { overflow: hidden; }
+
+.carousel-indicators [data-bs-target] {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.3);
+  transition: background 0.3s;
+}
+
+.carousel-indicators .active {
+  background: #00e5ff;
+  box-shadow: 0 0 6px #00e5ff;
+}
+
+.carousel-caption-below {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(8, 8, 16, 0.72);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  text-align: center;
+  padding: 14px 28px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.1);
+  min-width: 260px;
+  max-width: 90%;
+}
+
+.carousel-caption-below h5 {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+.carousel-caption-below p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+/* =======================================
+   HOME — SECTION INTRO
+======================================= */
+.home-section-intro {
+  text-align: center;
+  padding: 2.5rem 1.5rem 1rem;
+}
+
+.home-section-intro h2 {
+  font-family: 'ArcadeGamer', sans-serif;
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.home-section-intro h2 .highlight-cyan  { color: #00e5ff; }
+.home-section-intro h2 .highlight-magenta { color: #e040fb; }
+
+.home-section-intro p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* =======================================
+   HOME — CARDS GRID
+======================================= */
+.glitch-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1rem 1.5rem 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: #111118;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease;
+}
+
+.feature-card:hover {
+  border-color: rgba(255,255,255,0.14);
+}
+
+.feature-card.border-cyan   { border-left: 3px solid #00e5ff; }
+.feature-card.border-magenta { border-left: 3px solid #e040fb; }
+.feature-card.border-green  { border-left: 3px solid #00e676; }
+.feature-card.border-orange { border-left: 3px solid #ff6d00; }
+
+.feature-card h2 {
+  font-family: 'ArcadeGamer', sans-serif;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+
+.feature-card p {
+  font-size: 0.85rem;
+  color: #777;
+  text-align: left;
+  margin-bottom: 1.2rem;
+  flex: 1;
+  line-height: 1.55;
+}
+
+/* =======================================
+   MESSAGES
+======================================= */
+.messages {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 0;
+}
+
+.alert { border-radius: 10px; font-weight: 500; font-size: 0.9rem; }
+
+.alert.success, .alert-success {
+  background: rgba(0,230,118,0.1);
+  border: 1px solid rgba(0,230,118,0.3);
+  color: #00e676;
+}
+
+.alert.error, .alert-error, .alert-danger {
+  background: rgba(255,82,82,0.1);
+  border: 1px solid rgba(255,82,82,0.3);
+  color: #ff5252;
+}
+
+.alert.info, .alert-info {
+  background: rgba(0,229,255,0.1);
+  border: 1px solid rgba(0,229,255,0.3);
+  color: #00e5ff;
+}
+
+.alert.warning, .alert-warning {
+  background: rgba(255,171,0,0.1);
+  border: 1px solid rgba(255,171,0,0.3);
+  color: #ffab00;
+}
+
+/* =======================================
+   FORMS
+======================================= */
+.formulario {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 500;
+  color: #ccc;
+  font-size: 0.88rem;
+}
+
+small {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  color: #e0e0e0;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: rgba(0,229,255,0.45);
+  box-shadow: 0 0 0 3px rgba(0,229,255,0.06);
+  background: rgba(0,229,255,0.03);
+}
+
+textarea { resize: vertical; min-height: 80px; }
+
+input[type="radio"] {
+  margin-right: 0.4rem;
+  accent-color: #00e5ff;
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+.form-control {
+  background: rgba(255,255,255,0.04) !important;
+  color: #e0e0e0 !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  border-radius: 8px !important;
+  font-size: 0.9rem !important;
+}
+
+.form-control:focus {
+  border-color: rgba(0,229,255,0.45) !important;
+  box-shadow: 0 0 0 3px rgba(0,229,255,0.06) !important;
+  background: rgba(0,229,255,0.03) !important;
+  color: #fff !important;
+}
+
+.form-select {
+  background-color: rgba(17,17,24,0.97) !important;
+  color: #e0e0e0 !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  border-radius: 8px !important;
+}
+
+/* =======================================
+   TABLE (CURSOS)
+======================================= */
+.cursos-divulgados {
+  max-width: 100%;
+  margin: 1rem 0 3rem;
+}
+
+.cursos-divulgados h2 {
+  font-family: 'ArcadeGamer', sans-serif;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.tabela-wrapper {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 440px;
+  border-radius: 10px;
+}
+
+.tabela-cursos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  background: transparent;
+  color: #ccc;
+}
+
+.tabela-cursos th,
+.tabela-cursos td {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.tabela-cursos thead th {
+  font-weight: 600;
+  color: #888;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding-bottom: 0.75rem;
+  background: transparent;
+}
+
+.tabela-cursos tbody tr:hover td {
+  background: rgba(255,255,255,0.025);
+}
+
+.tabela-cursos tbody td:nth-child(2) {
+  font-weight: 600;
+  color: #fff;
+}
+
+.tabela-cursos a {
+  color: #00e5ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.tabela-cursos a:hover { text-decoration: underline; }
+
+.tabela-titulo {
+  font-family: 'ArcadeGamer', sans-serif;
+  font-size: 1.3rem;
+  color: #fff;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.tabela-subtitulo {
+  font-size: 0.8rem;
+  color: #555;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+/* =======================================
+   VAGAS LIST
+======================================= */
+.list-group-item {
+  background: #111118 !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-radius: 12px !important;
+  color: #e0e0e0 !important;
+  margin-bottom: 0.75rem;
+  padding: 1.2rem 1.5rem !important;
+  transition: border-color 0.2s;
+}
+
+.list-group-item:hover { border-color: rgba(0,229,255,0.2) !important; }
+
+.list-group-item h2 {
+  font-family: 'ArcadeGamer', sans-serif;
+  font-size: 1.05rem;
+  color: #fff;
+  margin-bottom: 0.35rem;
+}
+
+.list-group-item a { color: #00e5ff; }
+
+/* =======================================
+   ACCORDION (FAQ)
+======================================= */
+.accordion-button {
+  background: transparent !important;
+  color: #e0e0e0 !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #00e5ff !important;
+  background: rgba(0,229,255,0.05) !important;
+}
+
+.accordion-button::after {
+  filter: invert(1) brightness(0.7);
+}
+
+.accordion-item {
+  background: rgba(255,255,255,0.02) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-radius: 10px !important;
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+}
+
+.accordion-body {
+  color: #888;
+  font-size: 0.88rem;
+  background: transparent;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+/* =======================================
+   FOOTER
+======================================= */
+.footer {
+  width: 100%;
+  background: #0d0d14;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  color: #444;
+  text-align: center;
+  padding: 2rem 1.5rem 1.5rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: #00e5ff; }
+
+.footer p {
+  font-size: 0.78rem;
+  color: #333;
+  margin: 0;
+}
+
+/* Hidden in footer-only mode */
+.footer-logo { display: none; }
+.footer h3 { display: none; }
+.footer-social { display: none; }
+.footer-divider { display: none; }
+
+/* =======================================
+   PROGRESS BAR (password strength)
+======================================= */
+.progress {
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px;
+}
+
+.progress-bar { border-radius: 4px; transition: width 0.3s; }
+
+/* =======================================
+   MISC
+======================================= */
+.text-danger { color: #ff5252 !important; }
+.text-center a { color: #00e5ff; text-decoration: none; }
+.text-center a:hover { text-decoration: underline; }
+
+/* =======================================
+   CONT (legacy)
+======================================= */
+.cont {
+  max-width: 600px;
+  margin: 2rem auto 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* =======================================
+   CALCULADORA
+======================================= */
+#tipoMedia {
+  background: rgba(255,255,255,0.04);
+  color: #e0e0e0;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  width: 100%;
+}
+
+#resultado {
+  font-size: 1.15rem;
+  color: #00e5ff;
+  font-family: 'ArcadeGamer', sans-serif;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: rgba(0,229,255,0.06);
+  border: 1px solid rgba(0,229,255,0.15);
+}
+
+/* =======================================
+   ANIMATIONS
+======================================= */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up { animation: fadeInUp 0.4s ease forwards; }
+
+/* =======================================
+   RESPONSIVE
+======================================= */
+@media (max-width: 991px) {
+  main { padding-top: 57px; }
+
+  .navbar .navbar-nav,
+  .navbar .navbar-user-info,
+  .navbar .social-icons {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 1.9rem; }
+
+  .carousel-item img { height: 48vh; }
+
+  .carousel-control-prev,
+  .carousel-control-next { display: none !important; }
+
+  .carousel-caption-below {
+    bottom: 14px;
+    padding: 10px 16px;
+  }
+
+  .carousel-caption-below h5 { font-size: 1.2rem; }
+
+  .glitch-container {
+    grid-template-columns: 1fr;
+    padding: 0.75rem 1rem 2.5rem;
+  }
+
+  .section-page { padding: 2rem 1rem 3rem; }
+
+  .formulario { padding: 1.5rem 1rem; }
+}
+
+@media (max-width: 480px) {
+  .carousel-item img { height: 38vh; }
+  .footer { padding: 1.5rem 1rem 1rem; }
+  .glitch-container { grid-template-columns: 1fr; }
+}

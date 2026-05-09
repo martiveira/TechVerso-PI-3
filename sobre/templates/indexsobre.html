@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sobre — TechVerso{% endblock %}
+
+{% block content %}
+{% include 'messages.html' %}
+
+<div class="section-page">
+  <div class="section-header">
+    <h1 class="glitch-text" data-text="SOBRE NÓS">SOBRE NÓS</h1>
+    <p>Saiba como nos encontrar e como entrar em contato</p>
+  </div>
+
+  <div class="dark-card mb-3">
+    <p style="text-align:left;color:#888;font-size:0.9rem;line-height:1.65;margin-bottom:2rem;">
+      O <strong style="color:#fff;">TechVerso</strong> é uma comunidade criada por e para alunos da UNIVESP.
+      Nosso objetivo é facilitar a vida acadêmica, compartilhar conhecimento e conectar alunos de toda a rede.
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.75rem;">
+
+      <a href="https://chat.whatsapp.com/JONCTfNFkn50vZR04NNw2Y" target="_blank"
+         style="display:flex;flex-direction:column;align-items:center;padding:1.5rem 1rem;
+                background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+                border-radius:12px;text-decoration:none;transition:border-color 0.2s;"
+         onmouseover="this.style.borderColor='rgba(37,211,102,0.3)'"
+         onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+        <i class="fab fa-whatsapp" style="font-size:1.75rem;color:#25D366;margin-bottom:0.6rem;"></i>
+        <strong style="color:#fff;font-size:0.88rem;">WhatsApp</strong>
+        <span style="color:#555;font-size:0.77rem;margin-top:0.3rem;">Entre no grupo</span>
+      </a>
+
+      <a href="https://www.youtube.com/@TechVersoTV" target="_blank"
+         style="display:flex;flex-direction:column;align-items:center;padding:1.5rem 1rem;
+                background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+                border-radius:12px;text-decoration:none;transition:border-color 0.2s;"
+         onmouseover="this.style.borderColor='rgba(255,0,0,0.3)'"
+         onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+        <i class="fab fa-youtube" style="font-size:1.75rem;color:#FF0000;margin-bottom:0.6rem;"></i>
+        <strong style="color:#fff;font-size:0.88rem;">YouTube</strong>
+        <span style="color:#555;font-size:0.77rem;margin-top:0.3rem;">@TechVersoTV</span>
+      </a>
+
+      <a href="https://github.com/UNIVESP23" target="_blank"
+         style="display:flex;flex-direction:column;align-items:center;padding:1.5rem 1rem;
+                background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+                border-radius:12px;text-decoration:none;transition:border-color 0.2s;"
+         onmouseover="this.style.borderColor='rgba(255,255,255,0.2)'"
+         onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+        <i class="fab fa-github" style="font-size:1.75rem;color:#fff;margin-bottom:0.6rem;"></i>
+        <strong style="color:#fff;font-size:0.88rem;">GitHub</strong>
+        <span style="color:#555;font-size:0.77rem;margin-top:0.3rem;">UNIVESP23</span>
+      </a>
+
+      <a href="https://t.me/techversobr" target="_blank"
+         style="display:flex;flex-direction:column;align-items:center;padding:1.5rem 1rem;
+                background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+                border-radius:12px;text-decoration:none;transition:border-color 0.2s;"
+         onmouseover="this.style.borderColor='rgba(0,136,204,0.3)'"
+         onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+        <i class="fab fa-telegram" style="font-size:1.75rem;color:#0088cc;margin-bottom:0.6rem;"></i>
+        <strong style="color:#fff;font-size:0.88rem;">Telegram</strong>
+        <span style="color:#555;font-size:0.77rem;margin-top:0.3rem;">@techversobr</span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/techverso/" target="_blank"
+         style="display:flex;flex-direction:column;align-items:center;padding:1.5rem 1rem;
+                background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+                border-radius:12px;text-decoration:none;transition:border-color 0.2s;"
+         onmouseover="this.style.borderColor='rgba(10,102,194,0.3)'"
+         onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+        <i class="fab fa-linkedin" style="font-size:1.75rem;color:#0A66C2;margin-bottom:0.6rem;"></i>
+        <strong style="color:#fff;font-size:0.88rem;">LinkedIn</strong>
+        <span style="color:#555;font-size:0.77rem;margin-top:0.3rem;">techverso</span>
+      </a>
+
+      <a href="https://linktr.ee/TechVersoBR" target="_blank"
+         style="display:flex;flex-direction:column;align-items:center;padding:1.5rem 1rem;
+                background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+                border-radius:12px;text-decoration:none;transition:border-color 0.2s;"
+         onmouseover="this.style.borderColor='rgba(0,229,255,0.3)'"
+         onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+        <i class="fas fa-link" style="font-size:1.75rem;color:#00e5ff;margin-bottom:0.6rem;"></i>
+        <strong style="color:#fff;font-size:0.88rem;">Linktree</strong>
+        <span style="color:#555;font-size:0.77rem;margin-top:0.3rem;">Todos os links</span>
+      </a>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
