@@ -1,0 +1,1 @@
+web: gunicorn techverso.wsgi --log-file -
