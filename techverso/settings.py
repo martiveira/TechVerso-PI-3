@@ -1,6 +1,7 @@
 from django.contrib.messages import constants
 from dotenv import load_dotenv
 import os
+import dj_database_url
 from pathlib import Path
 
 # Caminho base do projeto
@@ -30,7 +31,8 @@ DEBUG = True
 SECRET_KEY = 'django-insecure-cc1@c!hb-zhx@hy18xi4r-11-%53)c8g$l1!wrva=$#!7rwy^k'
 
 ALLOWED_HOSTS = ["127.0.0.1",
-                 "localhost",]
+                 "localhost",
+                 "*"]
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'base', 'static'),]
@@ -205,6 +207,7 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [
     # Diretório onde os arquivos estáticos estão localizados
     os.path.join(BASE_DIR, "base/static"),
