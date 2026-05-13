@@ -49,10 +49,11 @@
     </form>
 
     <div class="text-center mt-3" style="font-size:0.85rem;color:#555;">
-      Já tem conta? <a href="{% url 'login' %}" style="color:#00e5ff;">Entrar</a>
+      Já tem conta? <a href="{% url 'accounts:login' %}" style="color:#00e5ff;">Entrar</a>
     </div>
   </div>
 </div>
 
 <script src="{% static 'js/password_strength.js' %}"></script>
 {% endblock %}
+

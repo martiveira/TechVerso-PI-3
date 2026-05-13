@@ -156,7 +156,7 @@ SESSION_TIMEOUT_REDIRECT = '/'
 
 # Parametros para os usuarios
 
-LOGIN_URL = 'login'
+LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
