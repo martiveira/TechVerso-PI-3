@@ -1,3 +1,4 @@
+from django.contrib.messages import constants
 from dotenv import load_dotenv
 import os
 from pathlib import Path
@@ -12,9 +13,6 @@ load_dotenv(dotenv_path=BASE_DIR / ".env")
 SECRET_KEY = os.getenv("SECRET_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-from pathlib import Path
-import os
-from django.contrib.messages import constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,13 +28,12 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 DEBUG = True
 
 SECRET_KEY = 'django-insecure-cc1@c!hb-zhx@hy18xi4r-11-%53)c8g$l1!wrva=$#!7rwy^k'
-  
+
 ALLOWED_HOSTS = ["127.0.0.1",
                  "localhost",]
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'base', 'static'),]
-
 
 
 # Application definition
@@ -103,7 +100,7 @@ WSGI_APPLICATION = 'techverso.wsgi.application'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
-    
+
 ]
 
 
@@ -112,12 +109,12 @@ AUTHENTICATION_BACKENDS = [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'techverso',
         'USER': 'techverso',
-        'PASSWORD': '123456',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
-        'PORT': '3306',
+        'PORT': '5432',
     }
 }
 
@@ -168,7 +165,6 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -189,7 +185,8 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "base/static"),  # Diretório onde os arquivos estáticos estão localizados
+    # Diretório onde os arquivos estáticos estão localizados
+    os.path.join(BASE_DIR, "base/static"),
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
