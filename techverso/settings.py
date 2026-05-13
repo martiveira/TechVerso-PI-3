@@ -165,12 +165,22 @@ ACCOUNT_EMAIL_VERIFICATION = 'optional'
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
+        'APP': {
+            'client_id': '1008217144490-2rc96nbt1e9cddcmkvq2qerkr8tslp0h.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        },
         'SCOPE': ['profile', 'email'],
         'AUTH_PARAMS': {'access_type': 'online'},
         'OAUTH_PKCE_ENABLED': True,
         'FETCH_USERINFO': True,
     },
     'github': {
+        'APP': {
+            'client_id': 'Ov23liBy6zjC4UQTwEs7',
+            'secret': 'a913d7ef0362672cd3c12fb52128e3823dd6c39a',
+            'key': ''
+        },
         'SCOPE': ['user', 'user:email'],
     },
 }

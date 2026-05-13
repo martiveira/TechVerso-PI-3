@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% load i18n %} {% block title %}Entrar via {{
+account.get_provider.name }} — TechVerso{% endblock %} {% block content %}
+<div class="section-page" style="max-width: 440px">
+  <div class="section-header">
+    <h1 class="glitch-text">
+      ENTRAR VIA {{ account.get_provider.name|upper }}
+    </h1>
+    <p>
+      Você está prestes a entrar usando sua conta {{ account.get_provider.name
+      }}.
+    </p>
+  </div>
+
+  <div class="dark-card">
+    <form method="post" action="{% url 'socialaccount_login' %}">
+      {% csrf_token %} {{ form.as_p }}
+      <input type="hidden" name="process" value="{{ process }}" />
+      <input type="hidden" name="next" value="{{ next }}" />
+      <input type="hidden" name="scope" value="{{ scope }}" />
+      <button type="submit" class="btn-primary">Continuar</button>
+    </form>
+
+    <p style="margin-top: 1rem; text-align: center">
+      <a href="{% url 'accounts:login' %}">← Voltar para o login</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
