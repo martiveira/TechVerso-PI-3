@@ -103,7 +103,15 @@ AUTHENTICATION_BACKENDS = [
 
 ]
 
+# Configurações do allauth
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+ACCOUNT_LOGIN_METHODS = {'email'}
+# ou 'mandatory' se quiser verificar e-mail
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -161,7 +169,10 @@ SOCIALACCOUNT_PROVIDERS = {
         'AUTH_PARAMS': {'access_type': 'online'},
         'OAUTH_PKCE_ENABLED': True,
         'FETCH_USERINFO': True,
-    }
+    },
+    'github': {
+        'SCOPE': ['user', 'user:email'],
+    },
 }
 
 
