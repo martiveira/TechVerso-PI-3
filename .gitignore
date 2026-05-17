@@ -16,6 +16,7 @@ staticfiles/
 
 # If you are using PyCharm # 
 # User-specific stuff
+.idea/
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
@@ -143,3 +144,7 @@ GitHub.sublime-settings
 .history
 job_posts.csv
 popularvagas.py
+*.sqlite3
+/staticfiles/
+/media/
+.venv/
