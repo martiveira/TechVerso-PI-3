@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %}Vagas — TechVerso{% endblock %}
 
 {% block content %}
-{% include 'messages.html' %}
+{% include "messages.html" %}
 
 <div class="section-page">
   <div class="section-header">
@@ -12,47 +12,44 @@
     <p>Vagas da comunidade + busca ao vivo no LinkedIn e Indeed</p>
   </div>
 
-  <!-- Filtros -->
   <form method="get" class="dark-card" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-end;margin-bottom:2rem;">
     <div style="flex:1;min-width:200px;">
       <label>Pesquisar</label>
-      <input type="text" name="q" value="{{ query }}"
-             placeholder="Ex: desenvolvedor python..."
-             class="form-control">
+      <input type="text" name="q" value="{{ query }}" placeholder="Ex: desenvolvedor python..." class="form-control">
     </div>
     <div>
       <label>Fonte</label>
       <select name="source" class="form-control">
         <option value="">Todas</option>
-        <option value="manual"   {% if source == 'manual' %}selected{% endif %}>Manual</option>
-        <option value="linkedin" {% if source == 'linkedin' %}selected{% endif %}>LinkedIn</option>
-        <option value="indeed"   {% if source == 'indeed' %}selected{% endif %}>Indeed</option>
+        <option value="manual"   {% if source == "manual" %}selected{% endif %}>Manual</option>
+        <option value="linkedin" {% if source == "linkedin" %}selected{% endif %}>LinkedIn</option>
+        <option value="indeed"   {% if source == "indeed" %}selected{% endif %}>Indeed</option>
       </select>
     </div>
     <div>
       <label>Local</label>
       <select name="local" class="form-control">
         <option value="">Todos</option>
-        <option value="Remoto"     {% if local == 'Remoto' %}selected{% endif %}>Remoto</option>
-        <option value="Híbrido"    {% if local == 'Híbrido' %}selected{% endif %}>Híbrido</option>
-        <option value="Presencial" {% if local == 'Presencial' %}selected{% endif %}>Presencial</option>
+        <option value="Remoto"     {% if local == "Remoto" %}selected{% endif %}>Remoto</option>
+        <option value="Híbrido"    {% if local == "Híbrido" %}selected{% endif %}>Híbrido</option>
+        <option value="Presencial" {% if local == "Presencial" %}selected{% endif %}>Presencial</option>
       </select>
     </div>
     <div>
       <label>Contrato</label>
       <select name="tipo" class="form-control">
         <option value="">Todos</option>
-        <option value="CLT"       {% if tipo == 'CLT' %}selected{% endif %}>CLT</option>
-        <option value="PJ"        {% if tipo == 'PJ' %}selected{% endif %}>PJ</option>
-        <option value="Estágio"   {% if tipo == 'Estágio' %}selected{% endif %}>Estágio</option>
-        <option value="Freelancer"{% if tipo == 'Freelancer' %}selected{% endif %}>Freelancer</option>
+        <option value="CLT"        {% if tipo == "CLT" %}selected{% endif %}>CLT</option>
+        <option value="PJ"         {% if tipo == "PJ" %}selected{% endif %}>PJ</option>
+        <option value="Estágio"    {% if tipo == "Estágio" %}selected{% endif %}>Estágio</option>
+        <option value="Freelancer" {% if tipo == "Freelancer" %}selected{% endif %}>Freelancer</option>
       </select>
     </div>
     <div style="display:flex;gap:.5rem;">
       <button type="submit" class="btn-teal"><i class="fas fa-search"></i> Buscar</button>
-      <a href="{% url 'vagas:lista' %}" class="btn-dark-outline">Limpar</a>
+      <a href="{% url "vagas:lista" %}" class="btn-dark-outline">Limpar</a>
     </div>
-    <a href="{% url 'vagas:create' %}" class="btn-teal" style="margin-left:auto;">
+    <a href="{% url "vagas:create" %}" class="btn-teal" style="margin-left:auto;">
       <i class="fas fa-plus"></i> Postar Vaga
     </a>
   </form>
@@ -70,18 +67,14 @@
     <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:.5rem;">
       <div>
         <h3 style="margin:0;color:#fff;">{{ vaga.titulo }}</h3>
-        {% if vaga.empresa %}
-        <p style="color:#aaa;margin:.25rem 0;">{{ vaga.empresa }}</p>
-        {% endif %}
+        {% if vaga.empresa %}<p style="color:#aaa;margin:.25rem 0;">{{ vaga.empresa }}</p>{% endif %}
         <p style="color:#888;font-size:.85rem;margin:0;">
           <i class="fas fa-map-marker-alt"></i> {{ vaga.cidade }}
           &nbsp;|&nbsp;
           <i class="fas fa-briefcase"></i> {{ vaga.tipo_contrato }}
           &nbsp;|&nbsp;
           <i class="fas fa-laptop-house"></i> {{ vaga.local_trabalho }}
-          {% if vaga.salario %}
-          &nbsp;|&nbsp; 💰 R$ {{ vaga.salario|floatformat:0 }}
-          {% endif %}
+          {% if vaga.salario %}&nbsp;|&nbsp; 💰 R$ {{ vaga.salario|floatformat:0 }}{% endif %}
         </p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.25rem;">
@@ -91,23 +84,19 @@
         <span style="font-size:.75rem;color:#555;">{{ vaga.data_publicacao|date:"d/m/Y" }}</span>
       </div>
     </div>
-
     {% if vaga.descricao %}
     <p style="margin:.75rem 0;color:#ccc;font-size:.9rem;">{{ vaga.descricao|truncatewords:25 }}</p>
     {% endif %}
-
-    <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;">
-      {% if vaga.url or vaga.link_inscricao %}
-      <a href="{{ vaga.url|default:vaga.link_inscricao }}" target="_blank" class="btn-teal" style="font-size:.85rem;">
-        <i class="fas fa-external-link-alt"></i> Ver vaga
-      </a>
-      {% endif %}
-    </div>
+    {% if vaga.url or vaga.link_inscricao %}
+    <a href="{{ vaga.url|default:vaga.link_inscricao }}" target="_blank" class="btn-teal" style="font-size:.85rem;">
+      <i class="fas fa-external-link-alt"></i> Ver vaga
+    </a>
+    {% endif %}
   </div>
   {% empty %}
   <div class="dark-card" style="text-align:center;color:#888;">
     <p>Nenhuma vaga encontrada.</p>
-    <p>Tente pesquisar por um cargo, ex: <em>"desenvolvedor python"</em>, <em>"analista de dados"</em>.</p>
+    <p>Tente pesquisar por um cargo, ex: <em>"desenvolvedor python"</em>.</p>
   </div>
   {% endfor %}
 </div>
