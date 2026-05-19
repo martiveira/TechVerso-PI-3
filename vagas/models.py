@@ -34,6 +34,10 @@ class JobPost(models.Model):
     data_publicacao = models.DateField(default='2025-01-01', editable=True)
     prazo_inscricao = models.DateField(default='2025-01-01',null=True, blank=True)
 
+    url    = models.URLField(default='', blank=True)
+    source = models.CharField(max_length=50, default='manual')
+    empresa = models.CharField(max_length=200, default='', blank=True)
+    
     def __str__(self):
         return self.titulo
 
