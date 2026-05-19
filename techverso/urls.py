@@ -11,8 +11,8 @@ urlpatterns = [
     path('', include('base.urls')),
     path('accounts/', include(('accounts.urls', 'accounts'))),
     path('accounts/', include('allauth.urls')),
-    path('vagas/', include('vagas.urls')),
-    path('cursos/', include('cursos.urls')),
+    path('vagas/', include(('vagas.urls', 'vagas'))),
+    path('cursos/', include(('cursos.urls', 'cursos'))),
     path('sobre/', include('sobre.urls')),
     path("faq/", include("faq.urls")),]
 

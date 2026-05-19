@@ -18,14 +18,16 @@
       oportunidades listadas pela comunidade.
     </p>
     <div class="d-flex gap-3 justify-content-center flex-wrap">
-      <a class="btn-teal" href="{% url 'create' %}">
+      <a class="btn-teal" href="{% url 'vagas:create' %}">
         <i class="fas fa-plus"></i> Postar Vaga
       </a>
-      <a class="btn-dark-outline" href="{% url 'list' %}">
+      <a class="btn-dark-outline" href="{% url 'vagas:lista' %}">
         <i class="fas fa-list"></i> Listar Vagas
       </a>
     </div>
   </div>
 </div>
 {% endblock %}
+
+
 

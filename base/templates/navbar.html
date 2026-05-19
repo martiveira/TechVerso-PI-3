@@ -19,14 +19,14 @@
       <li class="nav-item">
         <a
           class="nav-link {% if request.resolver_match.url_name == 'cursos' %}active-nav{% endif %}"
-          href="{% url 'cursos' %}"
+          href="{% url 'cursos:lista' %}"
           >Cursos</a
         >
       </li>
       <li class="nav-item">
         <a
           class="nav-link {% if request.resolver_match.url_name == 'vagas' %}active-nav{% endif %}"
-          href="{% url 'vagas' %}"
+          href="{% url 'vagas:index' %}"
           >Vagas</a
         >
       </li>
@@ -106,7 +106,7 @@
     </li>
     <li>
       <a
-        href="{% url 'cursos' %}"
+        href="{% url 'cursos:lista' %}"
         class="{% if request.resolver_match.url_name == 'cursos' %}active-nav{% endif %}"
       >
         Cursos
@@ -114,7 +114,7 @@
     </li>
     <li>
       <a
-        href="{% url 'vagas' %}"
+        href="{% url 'vagas:index' %}"
         class="{% if request.resolver_match.url_name == 'vagas' %}active-nav{% endif %}"
       >
         Vagas
@@ -208,4 +208,6 @@
 </div>
 
 <script src="{% static 'js/navbar.js' %}"></script>
+
+
 

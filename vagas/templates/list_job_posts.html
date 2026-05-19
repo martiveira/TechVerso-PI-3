@@ -70,7 +70,7 @@
     {% empty %}
     <div class="dark-card" style="text-align:center;padding:3rem 2rem;">
       <p style="color:#555;margin-bottom:1.25rem;">Nenhuma vaga disponível no momento. Seja o primeiro a publicar!</p>
-      <a href="{% url 'create' %}" class="btn-teal">
+      <a href="{% url 'vagas:create' %}" class="btn-teal">
         <i class="fas fa-plus"></i> Publicar vaga
       </a>
     </div>
@@ -86,4 +86,6 @@
   {% endif %}
 </div>
 {% endblock %}
+
+
 

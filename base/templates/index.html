@@ -33,7 +33,7 @@
     </div>
 
     <div class="carousel-item">
-      <a href="{% url 'vagas' %}">
+      <a href="{% url 'vagas:index' %}">
         <picture>
           <source media="(max-width: 768px)" srcset="{% static 'images/astro_chamingven_mob.png' %}">
           <img src="{% static 'images/astro_chamingven.png' %}" class="d-block w-100" alt="Vagas e Network">
@@ -102,13 +102,13 @@
   <div class="feature-card border-magenta fade-in-up">
     <h2>Cursos, Projetos e etc.</h2>
     <p>Espaço dedicado à divulgação de cursos pagos ou gratuitos, projetos pessoais ou profissionais, e indicação de produtores de conteúdo.</p>
-    <a href="{% url 'cursos' %}" class="btn-teal" style="align-self:flex-start;">Ver Cursos</a>
+    <a href="{% url 'cursos:lista' %}" class="btn-teal" style="align-self:flex-start;">Ver Cursos</a>
   </div>
 
   <div class="feature-card border-green fade-in-up">
     <h2>V.E.N – Vagas, Estágios e Networking</h2>
     <p>Vagas de trabalho, estágios e networking. Nunca divulgue dados pessoais sensíveis.</p>
-    <a href="{% url 'vagas' %}" class="btn-teal" style="align-self:flex-start;">Ver Vagas</a>
+    <a href="{% url 'vagas:index' %}" class="btn-teal" style="align-self:flex-start;">Ver Vagas</a>
   </div>
 
   <div class="feature-card border-orange fade-in-up">
@@ -121,4 +121,6 @@
 
 <script src="{% static 'js/glitch.js' %}"></script>
 {% endblock %}
+
+
 
